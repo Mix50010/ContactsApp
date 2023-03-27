@@ -16,5 +16,15 @@ namespace ContactsApp.View
         {
             InitializeComponent();
         }
+
+        private void button3_MouseEnter(object sender, EventArgs e)
+        {
+            button3.Text = "Test";
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            button3.Text = "";
+        }
     }
 }

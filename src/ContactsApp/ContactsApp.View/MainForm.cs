@@ -17,42 +17,64 @@ namespace ContactsApp.View
             InitializeComponent();
         }
 
-        private void button3_MouseEnter(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
-            deleteContactButton.Image = Properties.Resources.remove_contact_32x32;
-            deleteContactButton.BackColor = System.Drawing.Color.FromArgb(0xFF, 0xF5, 0xF5, 0xFF);
+            var form = new ContactForm();
+            form.ShowDialog();
         }
 
-        private void button3_MouseLeave(object sender, EventArgs e)
+        private void AddButton_MouseEnter(object sender, EventArgs e)
         {
-            deleteContactButton.Image = Properties.Resources.remove_contact_32x32_gray;
-            deleteContactButton.BackColor = System.Drawing.Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
+            AddButton.Image = Properties.Resources.add_contact_32x32;
+            AddButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#F5F5FF");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AddButton_MouseLeave(object sender, EventArgs e)
         {
-            ContactForm form = new ContactForm();
-            form.Show();
+            AddButton.Image = Properties.Resources.add_contact_32x32_gray;
+            AddButton.BackColor = Color.White;
         }
 
-        private void editContactButton_MouseEnter(object sender, EventArgs e)
+
+        private void RemoveButton_MouseEnter(object sender, EventArgs e)
         {
-            editContactButton.Image = Properties.Resources.edit_contact_32x32;
+            RemoveButton.Image = Properties.Resources.remove_contact_32x32;
+            RemoveButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#FAF5F5");
         }
 
-        private void editContactButton_MouseLeave(object sender, EventArgs e)
+        private void RemoveButton_MouseLeave(object sender, EventArgs e)
         {
-            editContactButton.Image = Properties.Resources.edit_contact_32x32_gray;
+            RemoveButton.Image = Properties.Resources.remove_contact_32x32_gray;
+            RemoveButton.BackColor = Color.White;
         }
 
-        private void createButtonContact_MouseEnter(object sender, EventArgs e)
+        private void EditButton_MouseEnter(object sender, EventArgs e)
         {
-            createButtonContact.Image = Properties.Resources.add_contact_32x32;
+            EditButton.Image = Properties.Resources.edit_contact_32x32;
+            EditButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#F5F5FF");
         }
 
-        private void createButtonContact_MouseLeave(object sender, EventArgs e)
+        private void EditButton_MouseLeave(object sender, EventArgs e)
         {
-            createButtonContact.Image = Properties.Resources.add_contact_32x32_gray;
+            EditButton.Image = Properties.Resources.edit_contact_32x32_gray;
+            EditButton.BackColor = Color.White;
+        }
+
+        private void AddButton_Click_1(object sender, EventArgs e)
+        {
+            var form = new ContactForm();
+            form.ShowDialog();
+        }
+
+        private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            var form = new AboutForm();
+            form.ShowDialog();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            BirthdayPanel.Visible = false;
         }
 
         

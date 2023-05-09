@@ -9,20 +9,28 @@ namespace ContactsApp.Model
     /// <summary> 
     /// Описывает проект. 
     /// </summary> 
-    internal class Project
+    public class Project
     {
         /// <summary> 
         /// Контакты. 
         /// </summary> 
-        private SortedSet<Contact> contacts = new SortedSet<Contact> ();
+        private List<Contact> _contacts = new List<Contact> ();
 
         /// <summary> 
+        /// Возвращает и задает контакты. 
+        /// </summary>
+        public List<Contact> Contacts
+        {
+            get { return _contacts; }
+            set { _contacts = value; }
+        }
+        /// <summary>  
         /// Возвращает именинников. 
         /// </summary> 
-        public SortedSet<Contact> GetBirthdays()
+        public List<Contact> GetBirthdays()
         {
-            SortedSet<Contact> birthdays = new SortedSet<Contact> ();
-            foreach (Contact contact in contacts)
+            List<Contact> birthdays = new List<Contact> ();
+            foreach (Contact contact in _contacts)
             {
                 if (contact.DateOfBirth.CompareTo(DateTime.Today) == 0)
                     birthdays.Add(contact);
@@ -33,10 +41,10 @@ namespace ContactsApp.Model
         /// <summary> 
         /// Возвращает найденные по подстроке контакты. 
         /// </summary> 
-        public SortedSet<Contact> FindContacts(string subStr)
+        public List<Contact> FindContacts(string subStr)
         {
-            SortedSet<Contact> findedContacts = new SortedSet<Contact>();
-            foreach (Contact contact in contacts)
+            List<Contact> findedContacts = new List<Contact>();
+            foreach (Contact contact in _contacts)
             {
                 if (contact.DateOfBirth.ToString().Contains(subStr))
                     findedContacts.Add(contact);

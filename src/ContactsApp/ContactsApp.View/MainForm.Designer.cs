@@ -136,6 +136,7 @@
             this.RemoveButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.RemoveButton.TabIndex = 2;
             this.RemoveButton.TabStop = false;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             this.RemoveButton.MouseEnter += new System.EventHandler(this.RemoveButton_MouseEnter);
             this.RemoveButton.MouseLeave += new System.EventHandler(this.RemoveButton_MouseLeave);
             // 
@@ -149,6 +150,7 @@
             this.EditButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.EditButton.TabIndex = 3;
             this.EditButton.TabStop = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             this.EditButton.MouseEnter += new System.EventHandler(this.EditButton_MouseEnter);
             this.EditButton.MouseLeave += new System.EventHandler(this.EditButton_MouseLeave);
             // 
@@ -179,6 +181,7 @@
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(238, 377);
             this.ContactsListBox.TabIndex = 1;
+            this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             // 
             // ContactsViewPanel
             // 

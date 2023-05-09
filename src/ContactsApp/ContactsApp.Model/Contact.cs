@@ -12,7 +12,7 @@ namespace ContactsApp.Model
     /// <summary> 
     /// Описывает контакт. 
     /// </summary> 
-    internal class Contact : ICloneable, IComparable<Contact>
+    public class Contact : ICloneable, IComparable<Contact>
     {
         /// <summary> 
         /// Полное имя. 
@@ -44,7 +44,7 @@ namespace ContactsApp.Model
         /// </summary> 
         public string FullName
         {
-            get { return FullName; }
+            get { return _fullName; }
             set
             {
                 if (value.Length > 100)
@@ -52,8 +52,8 @@ namespace ContactsApp.Model
                 CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
                 _fullName =currentCulture.TextInfo.ToTitleCase(value);
 
-                string v = String.Join(" ", value.Split().Select(s => s.First().ToString().ToUpper()));
-                _fullName = v;
+               // string v = String.Join(" ", value.Split().Select(s => s.First().ToString().ToUpper()));
+               // _fullName = v;
             }
         }
 
@@ -64,9 +64,11 @@ namespace ContactsApp.Model
         {
             get { return _phoneNumber; }
             set {
-                if (value.Length != 11 || value.All(c => "1234567890+-() ".Contains(c)))
+                if (value.Length != 11)
                     throw new ArgumentException("PhoneNumber length should be equal to 11 symbols " +
                         "and contains only digits and '+' symbol");
+                if ((!value.All(c => "1234567890+-() ".Contains(c))))
+                    throw new ArgumentException("PhoneNumber length should contain only digits and '+' symbol");
                 _phoneNumber = value;
             }
         }
@@ -91,8 +93,10 @@ namespace ContactsApp.Model
         {
             get { return _dateOfBirth; }
             set {
-                if (value.Year > 1900 || value.CompareTo(DateTime.Now) >= 0)
-                    throw new ArgumentException("DateTime should be more than 1900 and less than now");
+                if (value.Year < 1900)
+                    throw new ArgumentException("DateTime should be more than 1900");
+                if (value.CompareTo(DateTime.Now) >= 0)
+                    throw new ArgumentException("DateTime should be less than now");
                 _dateOfBirth = value;
             }
         }

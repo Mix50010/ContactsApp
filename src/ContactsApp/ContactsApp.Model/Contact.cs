@@ -9,9 +9,39 @@ using System.Globalization;
 
 namespace ContactsApp.Model
 {
+    /// <summary> 
+    /// Описывает контакт. 
+    /// </summary> 
     internal class Contact : ICloneable, IComparable<Contact>
     {
-        private string fullName;
+        /// <summary> 
+        /// Полное имя. 
+        /// </summary> 
+        private string _fullName;
+
+        /// <summary> 
+        /// Телефонный номер. 
+        /// </summary> 
+        private string _phoneNumber;
+
+        /// <summary> 
+        /// Адрес электронной почты. 
+        /// </summary> 
+        private string _email;
+
+        /// <summary> 
+        /// Дата рождения. 
+        /// </summary> 
+        private DateTime _dateOfBirth;
+
+        /// <summary> 
+        /// Идентификатор ВКонтакте. 
+        /// </summary> 
+        private string _vkID;
+
+        /// <summary> 
+        /// Возвращает или задает полное имя. 
+        /// </summary> 
         public string FullName
         {
             get { return FullName; }
@@ -20,53 +50,69 @@ namespace ContactsApp.Model
                 if (value.Length > 100)
                     throw new ArgumentException("FullName length should be less than 50 symbols");
                 CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
-                fullName =currentCulture.TextInfo.ToTitleCase(value);
+                _fullName =currentCulture.TextInfo.ToTitleCase(value);
 
                 string v = String.Join(" ", value.Split().Select(s => s.First().ToString().ToUpper()));
-                fullName = v;
+                _fullName = v;
             }
         }
-        private string phoneNumber;
+
+        /// <summary> 
+        /// Возвращает или задает телефонный номер. 
+        /// </summary> 
         public string PhoneNumber
         {
-            get { return phoneNumber; }
+            get { return _phoneNumber; }
             set {
                 if (value.Length != 11 || value.All(c => "1234567890+-() ".Contains(c)))
                     throw new ArgumentException("PhoneNumber length should be equal to 11 symbols " +
                         "and contains only digits and '+' symbol");
-                phoneNumber = value;
+                _phoneNumber = value;
             }
         }
-        private string email;
+
+        /// <summary> 
+        /// Возвращает или задает электронный адрес. 
+        /// </summary> 
         public string Email
         {
-            get { return email; }
+            get { return _email; }
             set {
                 if (value.Length > 100)
                     throw new ArgumentException("Email length should be less than 50 symbols"); 
-                email = value; 
+                _email = value; 
             }
         }
-        private DateTime dateOfBirth;
+
+        /// <summary> 
+        /// Возвращает или задает дату рождения. 
+        /// </summary> 
         public DateTime DateOfBirth
         {
-            get { return dateOfBirth; }
+            get { return _dateOfBirth; }
             set {
                 if (value.Year > 1900 || value.CompareTo(DateTime.Now) >= 0)
                     throw new ArgumentException("DateTime should be more than 1900 and less than now");
-                dateOfBirth = value;
+                _dateOfBirth = value;
             }
         }
-        private string vkID;
+
+        /// <summary> 
+        /// Возвращает или задает идентификатор ВКонтакте. 
+        /// </summary> 
         public string VkID
         {
-            get { return vkID; }
+            get { return _vkID; }
             set {
                 if (value.Length > 50)
                     throw new ArgumentException("VK ID length should be less than 50 symbols");
-                vkID = value; 
+                   _vkID = value; 
             }
         }
+
+        /// <summary> 
+        /// Создает экземпляр <see cref="Contact"/>. 
+        /// </summary> 
         public Contact(string fullName,
             string phoneNumber,
             string email,

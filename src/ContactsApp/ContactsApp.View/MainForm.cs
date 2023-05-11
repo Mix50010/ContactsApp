@@ -14,13 +14,21 @@ namespace ContactsApp.View
         /// </summary>
         private Project _project = new Project();
 
+        /// <summary> 
+        /// Обновляет ЛистБокс с контактами. 
+        /// </summary> 
         private void UpdateListBox()
         {
             _project.Contacts.Sort();
             ContactsListBox.Items.Clear();
             foreach (Contact contact in _project.Contacts)
                 ContactsListBox.Items.Add(contact.FullName);
+
         }
+
+        /// <summary> 
+        /// Добавляет контакт в проект. 
+        /// </summary> 
         private void AddContact()
         {
             Contact contact = new Contact(ObjectFactory.GetFullName(),
@@ -29,6 +37,10 @@ namespace ContactsApp.View
             _project.Contacts.Add(contact);
             
         }
+
+        /// <summary> 
+        /// Удаляет контакт из проекта. 
+        /// </summary> 
         private void RemoveContact(int index)
         {
             if (index == -1)
@@ -37,7 +49,9 @@ namespace ContactsApp.View
                 _project.Contacts[index].FullName + "?") == DialogResult.OK)
                 _project.Contacts.RemoveAt(index);
         }
-
+        /// <summary> 
+        /// Обновляет информацию о текущем выбранном контакте. 
+        /// </summary> 
         private void UpdateSelectedContact(int index)
         {
             FullNameTextbox.Text = _project.Contacts[index].FullName;
@@ -47,6 +61,9 @@ namespace ContactsApp.View
             VKTextBox.Text = _project.Contacts[index].VkID;
         }
 
+        /// <summary> 
+        /// Очищает поля информации о текущем выбранном контакте. 
+        /// </summary> 
         private void ClearSelectedContact()
         {
             FullNameTextbox.Clear();
@@ -136,7 +153,7 @@ namespace ContactsApp.View
 
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ContactsListBox.SelectedIndex == -1 || ContactsListBox.Items.Count == 0)
+            if (ContactsListBox.SelectedIndex == -1)
                 ClearSelectedContact();
             else
                 UpdateSelectedContact(ContactsListBox.SelectedIndex);

@@ -129,10 +129,18 @@ namespace ContactsApp.Model
             DateOfBirth = dateOfBirth;
             VkID = vkID;
         }
+
+        /// <summary> 
+        /// Реализация ICloneable. 
+        /// </summary> 
         public object Clone()
         {
             return new Contact(FullName, PhoneNumber, Email, DateOfBirth, VkID);
         }
+
+        /// <summary> 
+        /// Реализация IComparable. 
+        /// </summary> 
         public int CompareTo(Contact contact)
         {
             if (contact == null) throw new ArgumentNullException("Contact is null");

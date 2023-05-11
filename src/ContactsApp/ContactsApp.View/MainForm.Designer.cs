@@ -48,13 +48,13 @@
             this.VKLabel = new System.Windows.Forms.Label();
             this.DateOfBirthTextBox = new System.Windows.Forms.TextBox();
             this.DateOfBirthLabel = new System.Windows.Forms.Label();
-            this.PhoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.FullNameTextbox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.PhoneNumberTextBox = new System.Windows.Forms.MaskedTextBox();
             this.MainTableLayoutPanel.SuspendLayout();
             this.ContactsPanel.SuspendLayout();
             this.ButtonTableLayoutPanel.SuspendLayout();
@@ -185,12 +185,12 @@
             // 
             // ContactsViewPanel
             // 
+            this.ContactsViewPanel.Controls.Add(this.PhoneNumberTextBox);
             this.ContactsViewPanel.Controls.Add(this.BirthdayPanel);
             this.ContactsViewPanel.Controls.Add(this.VKTextBox);
             this.ContactsViewPanel.Controls.Add(this.VKLabel);
             this.ContactsViewPanel.Controls.Add(this.DateOfBirthTextBox);
             this.ContactsViewPanel.Controls.Add(this.DateOfBirthLabel);
-            this.ContactsViewPanel.Controls.Add(this.PhoneNumberTextBox);
             this.ContactsViewPanel.Controls.Add(this.PhoneNumberLabel);
             this.ContactsViewPanel.Controls.Add(this.EmailTextBox);
             this.ContactsViewPanel.Controls.Add(this.EmailLabel);
@@ -300,15 +300,6 @@
             this.DateOfBirthLabel.TabIndex = 7;
             this.DateOfBirthLabel.Text = "Date of Birth:";
             // 
-            // PhoneNumberTextBox
-            // 
-            this.PhoneNumberTextBox.BackColor = System.Drawing.Color.White;
-            this.PhoneNumberTextBox.Location = new System.Drawing.Point(112, 120);
-            this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
-            this.PhoneNumberTextBox.ReadOnly = true;
-            this.PhoneNumberTextBox.Size = new System.Drawing.Size(175, 20);
-            this.PhoneNumberTextBox.TabIndex = 6;
-            // 
             // PhoneNumberLabel
             // 
             this.PhoneNumberLabel.AutoSize = true;
@@ -370,6 +361,14 @@
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
+            // PhoneNumberTextBox
+            // 
+            this.PhoneNumberTextBox.Location = new System.Drawing.Point(112, 127);
+            this.PhoneNumberTextBox.Mask = "+7 (000) 000-0000";
+            this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
+            this.PhoneNumberTextBox.Size = new System.Drawing.Size(175, 20);
+            this.PhoneNumberTextBox.TabIndex = 30;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,7 +410,6 @@
         private System.Windows.Forms.Label VKLabel;
         private System.Windows.Forms.TextBox DateOfBirthTextBox;
         private System.Windows.Forms.Label DateOfBirthLabel;
-        private System.Windows.Forms.TextBox PhoneNumberTextBox;
         private System.Windows.Forms.Label PhoneNumberLabel;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Label EmailLabel;
@@ -426,6 +424,7 @@
         private System.Windows.Forms.PictureBox EditButton;
         private System.Windows.Forms.PictureBox AddButton;
         private System.Windows.Forms.PictureBox CancelNotificationButton;
+        private System.Windows.Forms.MaskedTextBox PhoneNumberTextBox;
     }
 }
 

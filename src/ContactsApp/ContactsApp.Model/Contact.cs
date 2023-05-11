@@ -64,9 +64,8 @@ namespace ContactsApp.Model
         {
             get { return _phoneNumber; }
             set {
-                if (value.Length != 11)
-                    throw new ArgumentException("PhoneNumber length should be equal to 11 symbols " +
-                        "and contains only digits and '+' symbol");
+                if (value.Length != 17)
+                    throw new ArgumentException("PhoneNumber length should be equal to 11 symbols ");
                 if ((!value.All(c => "1234567890+-() ".Contains(c))))
                     throw new ArgumentException("PhoneNumber length should contain only digits and '+' symbol");
                 _phoneNumber = value;

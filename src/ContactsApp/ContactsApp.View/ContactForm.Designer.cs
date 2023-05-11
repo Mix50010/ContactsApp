@@ -63,6 +63,7 @@
             this.VKTextBox.Name = "VKTextBox";
             this.VKTextBox.Size = new System.Drawing.Size(180, 20);
             this.VKTextBox.TabIndex = 25;
+            this.VKTextBox.TextChanged += new System.EventHandler(this.VKTextBox_TextChanged);
             // 
             // EmailTextBox
             // 
@@ -70,6 +71,7 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(360, 20);
             this.EmailTextBox.TabIndex = 22;
+            this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // FullNameTextBox
             // 
@@ -77,6 +79,7 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(360, 20);
             this.FullNameTextBox.TabIndex = 21;
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // VKLabel
             // 
@@ -133,6 +136,7 @@
             this.DateOfBirthPicker.Name = "DateOfBirthPicker";
             this.DateOfBirthPicker.Size = new System.Drawing.Size(180, 20);
             this.DateOfBirthPicker.TabIndex = 27;
+            this.DateOfBirthPicker.ValueChanged += new System.EventHandler(this.DateOfBirthPicker_ValueChanged);
             // 
             // OKPanel
             // 
@@ -182,10 +186,11 @@
             // PhoneNumberMaskedTextBox1
             // 
             this.PhoneNumberMaskedTextBox1.Location = new System.Drawing.Point(121, 130);
-            this.PhoneNumberMaskedTextBox1.Mask = "(999) 000-0000";
+            this.PhoneNumberMaskedTextBox1.Mask = "+7 (000) 000-0000";
             this.PhoneNumberMaskedTextBox1.Name = "PhoneNumberMaskedTextBox1";
             this.PhoneNumberMaskedTextBox1.Size = new System.Drawing.Size(100, 20);
             this.PhoneNumberMaskedTextBox1.TabIndex = 29;
+            this.PhoneNumberMaskedTextBox1.TextChanged += new System.EventHandler(this.PhoneNumberMaskedTextBox1_TextChanged);
             // 
             // ContactForm
             // 

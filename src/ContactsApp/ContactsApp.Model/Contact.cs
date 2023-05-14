@@ -47,6 +47,8 @@ namespace ContactsApp.Model
             get { return _fullName; }
             set
             {
+                if (value.Length == 0)
+                    throw new ArgumentException("FullName should be setted");
                 if (value.Length > 100)
                     throw new ArgumentException("FullName length should be less than 50 symbols");
                 CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
@@ -64,8 +66,9 @@ namespace ContactsApp.Model
         {
             get { return _phoneNumber; }
             set {
+
                 if (value.Length != 17)
-                    throw new ArgumentException("PhoneNumber length should be equal to 11 symbols ");
+                    throw new ArgumentException("PhoneNumber length should be equal to 17 symbols ");
                 if ((!value.All(c => "1234567890+-() ".Contains(c))))
                     throw new ArgumentException("PhoneNumber length should contain only digits and '+' symbol");
                 _phoneNumber = value;
@@ -80,7 +83,9 @@ namespace ContactsApp.Model
             get { return _email; }
             set {
                 if (value.Length > 100)
-                    throw new ArgumentException("Email length should be less than 50 symbols"); 
+                    throw new ArgumentException("Email length should be less than 50 symbols");
+                if (value.Length == 0)
+                    throw new ArgumentException("Email should be setted");
                 _email = value; 
             }
         }
@@ -107,10 +112,20 @@ namespace ContactsApp.Model
         {
             get { return _vkID; }
             set {
-                if (value.Length > 50)
+                if (value.Length > 50 )
                     throw new ArgumentException("VK ID length should be less than 50 symbols");
-                   _vkID = value; 
+                if (value.Length == 0)
+                    throw new ArgumentException("VK ID should be setted");
+                _vkID = value; 
             }
+        }
+
+        /// <summary> 
+        /// Создает пустой экземпляр <see cref="Contact"/>. 
+        /// </summary> 
+        public Contact()
+        {
+
         }
 
         /// <summary> 

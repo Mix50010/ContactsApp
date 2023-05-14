@@ -39,6 +39,7 @@
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.ContactsViewPanel = new System.Windows.Forms.Panel();
+            this.PhoneNumberTextBox = new System.Windows.Forms.MaskedTextBox();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
             this.CancelNotificationButton = new System.Windows.Forms.PictureBox();
             this.BirthdaySurnamesLabel = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.FullNameTextbox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.PhoneNumberTextBox = new System.Windows.Forms.MaskedTextBox();
             this.MainTableLayoutPanel.SuspendLayout();
             this.ContactsPanel.SuspendLayout();
             this.ButtonTableLayoutPanel.SuspendLayout();
@@ -169,6 +169,7 @@
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(202, 20);
             this.FindTextBox.TabIndex = 2;
+            this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
             // ContactsListBox
             // 
@@ -202,6 +203,16 @@
             this.ContactsViewPanel.Name = "ContactsViewPanel";
             this.ContactsViewPanel.Size = new System.Drawing.Size(544, 444);
             this.ContactsViewPanel.TabIndex = 1;
+            // 
+            // PhoneNumberTextBox
+            // 
+            this.PhoneNumberTextBox.BackColor = System.Drawing.Color.White;
+            this.PhoneNumberTextBox.Location = new System.Drawing.Point(112, 127);
+            this.PhoneNumberTextBox.Mask = "+7 (000) 000-0000";
+            this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
+            this.PhoneNumberTextBox.ReadOnly = true;
+            this.PhoneNumberTextBox.Size = new System.Drawing.Size(175, 20);
+            this.PhoneNumberTextBox.TabIndex = 30;
             // 
             // BirthdayPanel
             // 
@@ -360,14 +371,6 @@
             this.PhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
-            // 
-            // PhoneNumberTextBox
-            // 
-            this.PhoneNumberTextBox.Location = new System.Drawing.Point(112, 127);
-            this.PhoneNumberTextBox.Mask = "+7 (000) 000-0000";
-            this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
-            this.PhoneNumberTextBox.Size = new System.Drawing.Size(175, 20);
-            this.PhoneNumberTextBox.TabIndex = 30;
             // 
             // MainForm
             // 

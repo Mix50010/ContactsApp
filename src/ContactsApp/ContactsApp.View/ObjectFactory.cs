@@ -90,7 +90,7 @@ namespace ContactsApp.View
         static public string GetVkID()
         {
             string id = "";
-            int idSize = random.Next(50);
+            int idSize = random.Next(50) + 1;
             for (int i = 0; i < idSize; i++)
             {
                 id += (_alphabet[random.Next(_alphabet.Count)]);

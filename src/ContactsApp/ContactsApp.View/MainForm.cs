@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -16,17 +17,20 @@ namespace ContactsApp.View
         /// Проект. 
         /// </summary>
         private Project _project = new Project();
+        /// <summary>
+        /// Отображаемые при поиске контакты.
+        /// </summary>
+        private List<Contact> _currentContacts = new List<Contact>();
 
         /// <summary> 
         /// Обновляет ЛистБокс с контактами. 
         /// </summary> 
         private void UpdateListBox()
         {
-            _project.Contacts.Sort();
-            ContactsListBox.Items.Clear();
-            foreach (Contact contact in _project.Contacts)
-                ContactsListBox.Items.Add(contact.FullName);
-
+                _currentContacts.Sort();
+                ContactsListBox.Items.Clear();
+                foreach (Contact contact in _currentContacts)
+                    ContactsListBox.Items.Add(contact.FullName);
         }
 
         /// <summary> 
@@ -39,8 +43,6 @@ namespace ContactsApp.View
                 ObjectFactory.GetDateOfBirth(), ObjectFactory.GetVkID());
             _project.Contacts.Add(contact);
         }
-
-       
         
         /// <summary>
         /// Добавляет контакт.
@@ -49,6 +51,17 @@ namespace ContactsApp.View
         private void AddContact(Contact contact)
         {
             _project.Contacts.Add(contact);
+        }
+
+        /// <summary>
+        /// Обновляет текущий список контактов.
+        /// </summary>
+        private void UpdateCurrentContacts()
+        {
+            if (FindTextBox.Text.Length != 0)
+                _currentContacts = _project.FindContacts(FindTextBox.Text);
+            else
+                _currentContacts = _project.Contacts;
         }
 
         /// <summary> 
@@ -67,11 +80,19 @@ namespace ContactsApp.View
         /// </summary> 
         private void UpdateSelectedContact(int index)
         {
-            FullNameTextbox.Text = _project.Contacts[index].FullName;
-            EmailTextBox.Text = _project.Contacts[index].Email;
-            PhoneNumberTextBox.Text = _project.Contacts[index].PhoneNumber;
-            DateOfBirthTextBox.Text = _project.Contacts[index].DateOfBirth.ToLongDateString();
-            VKTextBox.Text = _project.Contacts[index].VkID;
+            if (index != -1)
+            {
+                FullNameTextbox.Text = _currentContacts[index].FullName;
+                EmailTextBox.Text = _currentContacts[index].Email;
+                PhoneNumberTextBox.Text = _currentContacts[index].PhoneNumber;
+                DateOfBirthTextBox.Text = _currentContacts[index].DateOfBirth.ToLongDateString();
+                VKTextBox.Text = _currentContacts[index].VkID;
+            }
+            else
+            {
+                ClearSelectedContact();
+            }
+           
         }
 
         /// <summary> 
@@ -108,6 +129,7 @@ namespace ContactsApp.View
             {
                 var newContact = contactForm.Contact;
                 AddContact(newContact);
+                UpdateCurrentContacts();
                 UpdateListBox();
                 UpdateSelectedContact(ContactsListBox.Items.Count - 1);
             }
@@ -179,7 +201,6 @@ namespace ContactsApp.View
             EditButton.BackColor = Color.White;
         }
 
-
         /// <summary>
         /// Форма помощи
         /// </summary>
@@ -211,11 +232,11 @@ namespace ContactsApp.View
             if (ContactsListBox.SelectedIndex != -1)
             {
                 var contactForm = new ContactForm();
-                contactForm.Contact = _project.Contacts[ContactsListBox.SelectedIndex];
+                contactForm.Contact = _currentContacts[ContactsListBox.SelectedIndex];
                 if (contactForm.ShowDialog() == DialogResult.OK)
                     {
                         var newContact = contactForm.Contact;
-                    _project.Contacts[ContactsListBox.SelectedIndex] = newContact;
+                    _project.Contacts[_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex])] = newContact;
                     UpdateSelectedContact(ContactsListBox.SelectedIndex);
                     UpdateListBox();
                 }
@@ -230,7 +251,9 @@ namespace ContactsApp.View
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             RemoveContact(ContactsListBox.SelectedIndex);
+            UpdateCurrentContacts();
             UpdateListBox();
+            UpdateSelectedContact(-1);
         }
 
         /// <summary>
@@ -246,9 +269,23 @@ namespace ContactsApp.View
                 UpdateSelectedContact(ContactsListBox.SelectedIndex);
         }
 
+        /// <summary>
+        /// Фильтрация по поисковому запросу.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
+            UpdateCurrentContacts();
+            UpdateListBox();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddRandomContact();
+            UpdateCurrentContacts();
+            UpdateListBox();
+            UpdateSelectedContact(ContactsListBox.Items.Count - 1);
         }
     }
 }

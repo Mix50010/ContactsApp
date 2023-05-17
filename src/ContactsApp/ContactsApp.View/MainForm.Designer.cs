@@ -39,6 +39,7 @@
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.ContactsViewPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.PhoneNumberTextBox = new System.Windows.Forms.MaskedTextBox();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
             this.CancelNotificationButton = new System.Windows.Forms.PictureBox();
@@ -55,7 +56,6 @@
             this.FullNameTextbox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.MainTableLayoutPanel.SuspendLayout();
             this.ContactsPanel.SuspendLayout();
             this.ButtonTableLayoutPanel.SuspendLayout();
@@ -205,6 +205,16 @@
             this.ContactsViewPanel.Name = "ContactsViewPanel";
             this.ContactsViewPanel.Size = new System.Drawing.Size(544, 444);
             this.ContactsViewPanel.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 315);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // PhoneNumberTextBox
             // 
@@ -374,16 +384,6 @@
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 315);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,6 +394,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
             this.MainTableLayoutPanel.ResumeLayout(false);
             this.ContactsPanel.ResumeLayout(false);

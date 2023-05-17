@@ -22,6 +22,8 @@ namespace ContactsApp.View
         /// </summary>
         private List<Contact> _currentContacts = new List<Contact>();
 
+        private ProjectSerializer _projectSerializer = new ProjectSerializer();
+
         /// <summary> 
         /// Обновляет ЛистБокс с контактами. 
         /// </summary> 
@@ -113,6 +115,9 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
+            _project = _projectSerializer.LoadFromFile();
+            UpdateCurrentContacts();
+            UpdateListBox();
         }
 
 
@@ -132,6 +137,7 @@ namespace ContactsApp.View
                 UpdateCurrentContacts();
                 UpdateListBox();
                 UpdateSelectedContact(ContactsListBox.Items.Count - 1);
+                _projectSerializer.SaveToFile(_project);
             }
         }
 
@@ -239,6 +245,7 @@ namespace ContactsApp.View
                     _project.Contacts[_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex])] = newContact;
                     UpdateSelectedContact(ContactsListBox.SelectedIndex);
                     UpdateListBox();
+                    _projectSerializer.SaveToFile(_project);
                 }
             }
         }
@@ -254,6 +261,7 @@ namespace ContactsApp.View
             UpdateCurrentContacts();
             UpdateListBox();
             UpdateSelectedContact(-1);
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -286,6 +294,11 @@ namespace ContactsApp.View
             UpdateCurrentContacts();
             UpdateListBox();
             UpdateSelectedContact(ContactsListBox.Items.Count - 1);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _projectSerializer.SaveToFile(_project);
         }
     }
 }

@@ -11,12 +11,25 @@ namespace ContactsApp.Model
 {
     public class ProjectSerializer
     {
+        /// <summary>
+        /// Сериализатор.
+        /// </summary>
         private JsonSerializer _serializer;
 
+        /// <summary>
+        /// Имя файла с данными.
+        /// </summary>
         private string FileName { get; set; }
 
+        /// <summary>
+        /// Директория данных.
+        /// </summary>
         private string FileDirectory { get; set; }
 
+        /// <summary>
+        /// Запись текущего проекта в файл.
+        /// </summary>
+        /// <param name="project"></param>
         public void SaveToFile(Project project)
         {
                 using (StreamWriter sw = new StreamWriter(FileDirectory + FileName))
@@ -28,6 +41,10 @@ namespace ContactsApp.Model
                 }
         }
 
+        /// <summary>
+        /// Загрузка проекта из файла.
+        /// </summary>
+        /// <returns></returns>
         public Project LoadFromFile()
         {
             //Создаём переменную, в которую поместим результат 
@@ -56,6 +73,9 @@ namespace ContactsApp.Model
            
         }
 
+        /// <summary>
+        /// Объект сериализатора
+        /// </summary>
         public ProjectSerializer()
         {
             FileDirectory = GetFolderPath(SpecialFolder.ApplicationData) + "\\Goryachev\\ContactsApp";

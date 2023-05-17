@@ -32,7 +32,8 @@ namespace ContactsApp.Model
             List<Contact> birthdays = new List<Contact> ();
             foreach (Contact contact in _contacts)
             {
-                if (contact.DateOfBirth.Date.CompareTo(DateTime.Now.Date) == 0)
+                if (contact.DateOfBirth.Month == DateTime.Now.Month && 
+                    contact.DateOfBirth.Day == DateTime.Now.Day )
                     birthdays.Add(contact);
             }
             return birthdays;

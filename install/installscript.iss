@@ -12,7 +12,7 @@ OutputBaseFilename=SetupContactsApp
 SetupIconFile="ContactsApp_96x96.ico"
 LicenseFile="..\LICENSE"
 [Files] 
-Source: "..\src\ContactsApp\ContactsApp.View\bin\Debug\ContactsApp.View.exe"; DestDir: "{app}" 
+Source: "..\1\\src\ContactsApp\ContactsApp.View\bin\Debug\ContactsApp.View.exe"; DestDir: "{app}" 
 Source: "..\src\ContactsApp\ContactsApp.View\bin\Debug\*.dll"; DestDir: "{app}" 
 [Tasks]
 ; Создание иконки на рабочем столе

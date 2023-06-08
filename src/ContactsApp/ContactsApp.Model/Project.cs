@@ -27,14 +27,16 @@ namespace ContactsApp.Model
         /// <summary>  
         /// Возвращает именинников. 
         /// </summary> 
-        public List<Contact> GetBirthdays()
+        public List<Contact> GetContactsByDateOfBirth(DateTime date)
         {
             List<Contact> birthdays = new List<Contact> ();
             foreach (Contact contact in _contacts)
             {
-                if (contact.DateOfBirth.Month == DateTime.Now.Month && 
-                    contact.DateOfBirth.Day == DateTime.Now.Day )
+                if (contact.DateOfBirth.Month == date.Month && 
+                    contact.DateOfBirth.Day == date.Day )
+                {
                     birthdays.Add(contact);
+                }
             }
             return birthdays;
         }
@@ -42,21 +44,19 @@ namespace ContactsApp.Model
         /// <summary> 
         /// Возвращает найденные по подстроке контакты. 
         /// </summary> 
-        public List<Contact> FindContacts(string subStr)
+        public List<Contact> FindContacts(string subString)
         {
             List<Contact> findedContacts = new List<Contact>();
             foreach (Contact contact in _contacts)
             {
-                if (contact.DateOfBirth.ToString().Contains(subStr))
+                if (contact.DateOfBirth.ToString().Contains(subString) ||
+                        contact.FullName.Contains(subString) ||
+                        contact.Email.Contains(subString) ||
+                        contact.PhoneNumber.Contains(subString) ||
+                        contact.VkID.Contains(subString))
+                {
                     findedContacts.Add(contact);
-                else if (contact.FullName.Contains(subStr))
-                    findedContacts.Add(contact);
-                else if (contact.Email.Contains(subStr))
-                    findedContacts.Add(contact);
-                else if (contact.PhoneNumber.Contains(subStr))
-                    findedContacts.Add(contact);
-                else if (contact.VkID.Contains(subStr))
-                    findedContacts.Add(contact);
+                }
             }
             return findedContacts;
         }

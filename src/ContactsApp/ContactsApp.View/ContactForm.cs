@@ -18,18 +18,6 @@ namespace ContactsApp.View
         /// Экземпляр контакта.
         /// </summary>
         private Contact _contact;
-        /// <summary>
-        /// Свойства контакта.
-        /// </summary>
-        public Contact Contact
-        {
-            get{ return _contact; }
-            set
-            { 
-                _contact = value;
-                UpdateForm();
-            }
-        }
 
         /// <summary>
         /// Поле ошибки для имени.
@@ -38,7 +26,7 @@ namespace ContactsApp.View
 
         /// <summary>
         /// Поле ошибки для емайла.
-        /// </summary>
+        /// </summary>  
         private string _emailTextBoxError = "";
 
         /// <summary>
@@ -55,60 +43,18 @@ namespace ContactsApp.View
         /// Поле ошибки для Вк.
         /// </summary>
         private string _VKTextBoxError = "";
-
+        
         /// <summary>
-        /// Проверка формы на ошибки во вводе.
+        /// Свойства контакта.
         /// </summary>
-        /// <returns></returns>
-        private bool CheckFormOnErrors()
+        public Contact Contact
         {
-            bool error = false;
-            string errorText = "";
-            if (_fullNameTextBoxError.Length != 0)
+            get { return _contact; }
+            set
             {
-                //MessageBox.Show(_emailTextBoxError);
-                errorText += _fullNameTextBoxError + "\n";
-                error = true;
+                _contact = value;
+                UpdateForm();
             }
-            if (_emailTextBoxError.Length != 0)
-            {
-                //MessageBox.Show(_emailTextBoxError);
-                errorText += _emailTextBoxError + "\n";
-                error = true;
-            }
-            if (_phoneNumberMaskedTextBoxError.Length != 0)
-            {
-                //MessageBox.Show(_phoneNumberMaskedTextBoxError);
-                errorText += _phoneNumberMaskedTextBoxError + "\n";
-                error = true;
-            }
-            if (_DateOfBirthPickerError.Length != 0)
-            {
-                //MessageBox.Show(_DateOfBirthPickerError);
-                errorText += _DateOfBirthPickerError + "\n";
-                error = true;
-            }
-            if (_VKTextBoxError.Length != 0)
-            {
-                //MessageBox.Show(_VKTextBoxError);
-                errorText += _VKTextBoxError + "\n";
-                error = true;
-            }
-            if (error)
-                MessageBox.Show(errorText);
-            return !error;
-        }
-
-        /// <summary>
-        /// Обновление текущего контакта.
-        /// </summary>
-        private void UpdateContact()
-        {
-            _contact.FullName = FullNameTextBox.Text;
-            _contact.Email = EmailTextBox.Text;
-            _contact.DateOfBirth = DateOfBirthPicker.Value;
-            _contact.PhoneNumber = PhoneNumberMaskedTextBox1.Text;
-            _contact.VkID = VKTextBox.Text;
         }
 
         /// <summary>
@@ -126,9 +72,66 @@ namespace ContactsApp.View
             _phoneNumberMaskedTextBoxError = "Номер телефона не должно быть пустым!";
             _VKTextBoxError = "ВК не должно быть пустым!";
         }
+
+
+        /// <summary>
+        /// Проверка формы на ошибки во вводе.
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckFormOnErrors()
+        {
+            bool isError = false;
+            string errorText = "";
+            if (_fullNameTextBoxError != "")
+            {
+                //MessageBox.Show(_emailTextBoxError);
+                errorText += _fullNameTextBoxError + "\n";
+                isError = true;
+            }
+            if (_emailTextBoxError.Length != 0)
+            {
+                //MessageBox.Show(_emailTextBoxError);
+                errorText += _emailTextBoxError + "\n";
+                isError = true;
+            }
+            if (_phoneNumberMaskedTextBoxError.Length != 0)
+            {
+                //MessageBox.Show(_phoneNumberMaskedTextBoxError);
+                errorText += _phoneNumberMaskedTextBoxError + "\n";
+                isError = true;
+            }
+            if (_DateOfBirthPickerError.Length != 0)
+            {
+                //MessageBox.Show(_DateOfBirthPickerError);
+                errorText += _DateOfBirthPickerError + "\n";
+                isError = true;
+            }
+            if (_VKTextBoxError.Length != 0)
+            {
+                //MessageBox.Show(_VKTextBoxError);
+                errorText += _VKTextBoxError + "\n";
+                isError = true;
+            }
+            if (isError)
+                MessageBox.Show(errorText);
+            return !isError;
+        }
+
+        /// <summary>
+        /// Обновление текущего контакта.
+        /// </summary>
+        private void UpdateContact()
+        {
+            _contact.FullName = FullNameTextBox.Text;
+            _contact.Email = EmailTextBox.Text;
+            _contact.DateOfBirth = DateOfBirthPicker.Value;
+            _contact.PhoneNumber = PhoneNumberMaskedTextBox1.Text;
+            _contact.VkID = VKTextBox.Text;
+        }
         /// <summary>
         /// Обновление информации на форме.
         /// </summary>
+        /// 
         private void UpdateForm()
         {
             FullNameTextBox.Text = _contact.FullName;

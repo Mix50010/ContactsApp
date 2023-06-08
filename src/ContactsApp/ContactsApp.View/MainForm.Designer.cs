@@ -39,7 +39,6 @@
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.ContactsViewPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.PhoneNumberTextBox = new System.Windows.Forms.MaskedTextBox();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
             this.CancelNotificationButton = new System.Windows.Forms.PictureBox();
@@ -123,7 +122,7 @@
             this.AddButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddButton.TabIndex = 4;
             this.AddButton.TabStop = false;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click_1);
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             this.AddButton.MouseEnter += new System.EventHandler(this.AddButton_MouseEnter);
             this.AddButton.MouseLeave += new System.EventHandler(this.AddButton_MouseLeave);
             // 
@@ -187,7 +186,6 @@
             // 
             // ContactsViewPanel
             // 
-            this.ContactsViewPanel.Controls.Add(this.button1);
             this.ContactsViewPanel.Controls.Add(this.PhoneNumberTextBox);
             this.ContactsViewPanel.Controls.Add(this.BirthdayPanel);
             this.ContactsViewPanel.Controls.Add(this.VKTextBox);
@@ -205,16 +203,6 @@
             this.ContactsViewPanel.Name = "ContactsViewPanel";
             this.ContactsViewPanel.Size = new System.Drawing.Size(544, 444);
             this.ContactsViewPanel.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 315);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // PhoneNumberTextBox
             // 
@@ -250,7 +238,7 @@
             this.CancelNotificationButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.CancelNotificationButton.TabIndex = 3;
             this.CancelNotificationButton.TabStop = false;
-            this.CancelNotificationButton.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.CancelNotificationButton.Click += new System.EventHandler(this.CancelNotiicationButton_Click);
             // 
             // BirthdaySurnamesLabel
             // 
@@ -441,7 +429,6 @@
         private System.Windows.Forms.PictureBox AddButton;
         private System.Windows.Forms.PictureBox CancelNotificationButton;
         private System.Windows.Forms.MaskedTextBox PhoneNumberTextBox;
-        private System.Windows.Forms.Button button1;
     }
 }
 

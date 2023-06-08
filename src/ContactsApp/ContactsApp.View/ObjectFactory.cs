@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ContactsApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,16 @@ namespace ContactsApp.View
         /// </summary> 
         private static List<string> _alphabet = new List<string>();
 
+        /// <summary>
+        /// Возвращает случайный контакт.
+        /// </summary>
+        public static Contact GetRandomContact()
+        {
+            return new Contact(ObjectFactory.GetFullName(),
+               ObjectFactory.GetPhoneNumber(), ObjectFactory.GetEmail(),
+               ObjectFactory.GetDateOfBirth(), ObjectFactory.GetVkID());
+        }
+
         /// <summary> 
         /// Возвращает случаное полное имя. 
         /// </summary> 
@@ -50,19 +61,19 @@ namespace ContactsApp.View
             int emailSize = random.Next(50);
             for(int i = 0; i < emailSize; i++)
             {
-                email+=(_alphabet[random.Next(_alphabet.Count)]);
+                email+=_alphabet[random.Next(_alphabet.Count)];
             }
             email += "@";
             int prefixSize = random.Next(10);
             for (int i = 0; i < prefixSize; i++)
             {
-                email += (_alphabet[random.Next(_alphabet.Count)]);
+                email += _alphabet[random.Next(_alphabet.Count)];
             }
             email += ".";
             int postfixSize = random.Next(5);
             for (int i = 0; i < postfixSize; i++)
             {
-                email += (_alphabet[random.Next(_alphabet.Count)]);
+                email += _alphabet[random.Next(_alphabet.Count)];
             }
             return email;
         }
@@ -93,7 +104,7 @@ namespace ContactsApp.View
             int idSize = random.Next(50) + 1;
             for (int i = 0; i < idSize; i++)
             {
-                id += (_alphabet[random.Next(_alphabet.Count)]);
+                id += _alphabet[random.Next(_alphabet.Count)];
             }
             return id;
         }
@@ -102,9 +113,8 @@ namespace ContactsApp.View
         /// Возвращает случайную дату рождения. 
         /// </summary> 
         static public DateTime GetDateOfBirth()
-        {
-            DateTime dateTime = new DateTime(1950 + random.Next(72), random.Next(12) + 1, random.Next(27) + 1);
-            return dateTime;
+        { 
+            return new DateTime(1950 + random.Next(72), random.Next(12) + 1, random.Next(27) + 1);
         }
 
         /// <summary> 

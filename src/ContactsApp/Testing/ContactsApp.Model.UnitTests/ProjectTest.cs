@@ -18,7 +18,6 @@ namespace ContactsApp.Model.UnitTests
             var project = new Project();
             project.Contacts = expected;
             var actual = expected;
-
             Assert.AreEqual(expected, actual, "Геттер Contacts возвращает неверные контакты");
         }
 
@@ -30,7 +29,6 @@ namespace ContactsApp.Model.UnitTests
             var project = new Project();
             project.Contacts = expected;
             var actual = expected;
-
             Assert.AreEqual(expected, actual, "Сеттер Contacts присваивает неверные контакты");
         }
 
@@ -42,8 +40,7 @@ namespace ContactsApp.Model.UnitTests
             var project = new Project();
             project.Contacts = expected;
             var actual = expected;
-
-            Assert.AreEqual(project.GetBirthdays(), actual, "Поиск именинника работает неверно");
+            Assert.AreEqual(project.GetContactsByDateOfBirth(DateTime.Now), actual, "Поиск именинника работает неверно");
         }
 
         [Test(Description = "Позитивный тест поиска имениннков")]
@@ -54,7 +51,6 @@ namespace ContactsApp.Model.UnitTests
             var project = new Project();
             project.Contacts = expected;
             var actual = expected;
-
             Assert.AreEqual(project.FindContacts("Мих"), actual, "Поиск по подстроке работает неверно");
         }
     }

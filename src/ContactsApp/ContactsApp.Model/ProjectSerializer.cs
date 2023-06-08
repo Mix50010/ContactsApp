@@ -32,13 +32,23 @@ namespace ContactsApp.Model
         /// <param name="project"></param>
         public void SaveToFile(Project project)
         {
-                using (StreamWriter sw = new StreamWriter(FileDirectory + FileName))
+            if (!Directory.Exists(FileDirectory))
+            {
+                Directory.CreateDirectory(FileDirectory);
+            }
+            if (!File.Exists(FileDirectory + FileName))
+            {
+                File.Create(FileDirectory + FileName);
+            }
+            using (StreamWriter sw = new StreamWriter(FileDirectory + FileName))
+            {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     //Вызываем сериализацию и передаем объект, который хотим 
                     //сериализовать
                     _serializer.Serialize(writer, project);
                 }
+            }
         }
 
         /// <summary>
@@ -47,6 +57,14 @@ namespace ContactsApp.Model
         /// <returns></returns>
         public Project LoadFromFile()
         {
+            if (!Directory.Exists(FileDirectory))
+            {
+                Directory.CreateDirectory(FileDirectory);
+            }
+            if (!File.Exists(FileDirectory + FileName))
+            {
+                File.Create(FileDirectory + FileName);
+            }
             //Создаём переменную, в которую поместим результат 
             //десериализации
             Project project = null;
@@ -61,16 +79,16 @@ namespace ContactsApp.Model
                     string json = sr.ReadToEnd();
                     project = JsonConvert.DeserializeObject<Project>(json);
                 }
-               if (project != null)
+                if (project != null)
+                {
                     return project;
+                }
                 return new Project();
             }
             catch (Exception)
             {
-                project = new Project();
-                return project;
+                return new Project();
             }
-           
         }
 
         /// <summary>
@@ -81,10 +99,6 @@ namespace ContactsApp.Model
             FileDirectory = GetFolderPath(SpecialFolder.ApplicationData) + "\\Goryachev\\ContactsApp";
             FileName = "\\ContactsApp.notes";
             _serializer = new JsonSerializer();
-            if (!Directory.Exists(FileDirectory))
-                Directory.CreateDirectory(FileDirectory);
-            if (!File.Exists(FileDirectory + FileName))
-                File.Create(FileDirectory + FileName);
         }
     }
 }

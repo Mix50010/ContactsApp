@@ -17,7 +17,7 @@ namespace ContactsApp.UnitTests
             var expected = "Смирнов Михаил";
             var contact = new Contact();
             contact.FullName = expected;
-            var actual = expected ;
+            var actual = expected;
 
             Assert.AreEqual(expected, actual, "Геттер FullName возвращает неверную фамилию");
         }

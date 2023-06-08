@@ -157,7 +157,10 @@ namespace ContactsApp.Model
         /// </summary> 
         public int CompareTo(Contact contact)
         {
-            if (contact == null) throw new ArgumentNullException("Contact is null");
+            if (contact == null)
+            { 
+                throw new ArgumentNullException("Contact is null"); 
+            }
             return FullName.CompareTo(contact.FullName);
         }
     }

@@ -49,11 +49,11 @@ namespace ContactsApp.Model
             {
                 if (value.Length == 0)
                 {
-                    throw new ArgumentException("FullName should be setted");
+                    throw new ArgumentException("Имя должно быть задано");
                 }
                 if (value.Length > 100)
                 {
-                    throw new ArgumentException("FullName length should be less than 50 symbols");
+                    throw new ArgumentException("Имя должно быть короче 50 символов");
                 }
                 CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
                 _fullName =currentCulture.TextInfo.ToTitleCase(value);
@@ -70,11 +70,11 @@ namespace ContactsApp.Model
 
                 if (value.Length != 17)
                 {
-                    throw new ArgumentException("PhoneNumber length should be equal to 17 symbols ");
+                    throw new ArgumentException("Длина номера телефона должна быть равна 17 символам");
                 }
                 if ((!value.All(c => "1234567890+-() ".Contains(c))))
                 {
-                    throw new ArgumentException("PhoneNumber length should contain only digits and '+' symbol");
+                    throw new ArgumentException("Недопустимые символы в номере телефона");
                 }
                 _phoneNumber = value;
             }
@@ -89,11 +89,11 @@ namespace ContactsApp.Model
             set {
                 if (value.Length > 100)
                 {
-                    throw new ArgumentException("Email length should be less than 50 symbols");
+                    throw new ArgumentException("Длина адреса электронной почты должна быть меньше 50 символов");
                 }
                 if (value.Length == 0)
                 {
-                    throw new ArgumentException("Email should be setted");
+                    throw new ArgumentException("Адрес электронной почты должен быть задан");
                 }
                 _email = value; 
             }
@@ -108,11 +108,11 @@ namespace ContactsApp.Model
             set {
                 if (value.Year < 1900)
                 {
-                    throw new ArgumentException("DateTime should be more than 1900");
+                    throw new ArgumentException("Дата рождения должна быть позднее 1900 года");
                 }
                 if (value.CompareTo(DateTime.Now) >= 0)
                 {
-                    throw new ArgumentException("DateTime should be less than now");
+                    throw new ArgumentException("Дата рождения не может быть в будущем");
                 }
                 _dateOfBirth = value;
             }
@@ -127,11 +127,11 @@ namespace ContactsApp.Model
             set {
                 if (value.Length > 50 )
                 {
-                    throw new ArgumentException("VK ID length should be less than 50 symbols");
+                    throw new ArgumentException("ID ВКонтакте должен быть меньше 50 символов");
                 }
                 if (value.Length == 0)
                 {
-                    throw new ArgumentException("VK ID should be setted");
+                    throw new ArgumentException("ID ВКонтакте должен быть задан");
                 }
                 _vkID = value; 
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using ContactsApp.Model;
 
-namespace ContactsApp.UnitTests
+namespace ContactsApp.Model.UnitTests
 {
     [TestFixture]
     public class ContactTest

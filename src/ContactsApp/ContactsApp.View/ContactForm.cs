@@ -84,31 +84,26 @@ namespace ContactsApp.View
             string errorText = "";
             if (_fullNameTextBoxError != "")
             {
-                //MessageBox.Show(_emailTextBoxError);
                 errorText += _fullNameTextBoxError + "\n";
                 isError = true;
             }
             if (_emailTextBoxError.Length != 0)
             {
-                //MessageBox.Show(_emailTextBoxError);
                 errorText += _emailTextBoxError + "\n";
                 isError = true;
             }
             if (_phoneNumberMaskedTextBoxError.Length != 0)
             {
-                //MessageBox.Show(_phoneNumberMaskedTextBoxError);
                 errorText += _phoneNumberMaskedTextBoxError + "\n";
                 isError = true;
             }
             if (_DateOfBirthPickerError.Length != 0)
             {
-                //MessageBox.Show(_DateOfBirthPickerError);
                 errorText += _DateOfBirthPickerError + "\n";
                 isError = true;
             }
             if (_VKTextBoxError.Length != 0)
             {
-                //MessageBox.Show(_VKTextBoxError);
                 errorText += _VKTextBoxError + "\n";
                 isError = true;
             }

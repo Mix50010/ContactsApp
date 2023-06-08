@@ -12,8 +12,8 @@ OutputBaseFilename=SetupContactsApp
 SetupIconFile="ContactsApp_96x96.ico"
 LicenseFile="..\LICENSE"
 [Files] 
-Source: "..\1\\src\ContactsApp\ContactsApp.View\bin\Debug\ContactsApp.View.exe"; DestDir: "{app}" 
-Source: "..\src\ContactsApp\ContactsApp.View\bin\Debug\*.dll"; DestDir: "{app}" 
+Source: "..\src\ContactsApp\ContactsApp.View\bin\Release\ContactsApp.View.exe"; DestDir: "{app}" 
+Source: "..\src\ContactsApp\ContactsApp.View\bin\Release\*.dll"; DestDir: "{app}" 
 [Tasks]
 ; Создание иконки на рабочем столе
 Name: "desktopicon"; Description: "Создать значок на рабочем столе"; GroupDescription: "Дополнительные значки"; Flags: unchecked

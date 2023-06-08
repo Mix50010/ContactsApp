@@ -48,14 +48,15 @@ namespace ContactsApp.Model
             set
             {
                 if (value.Length == 0)
+                {
                     throw new ArgumentException("FullName should be setted");
+                }
                 if (value.Length > 100)
+                {
                     throw new ArgumentException("FullName length should be less than 50 symbols");
+                }
                 CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
                 _fullName =currentCulture.TextInfo.ToTitleCase(value);
-
-               // string v = String.Join(" ", value.Split().Select(s => s.First().ToString().ToUpper()));
-               // _fullName = v;
             }
         }
 
@@ -68,9 +69,13 @@ namespace ContactsApp.Model
             set {
 
                 if (value.Length != 17)
+                {
                     throw new ArgumentException("PhoneNumber length should be equal to 17 symbols ");
+                }
                 if ((!value.All(c => "1234567890+-() ".Contains(c))))
+                {
                     throw new ArgumentException("PhoneNumber length should contain only digits and '+' symbol");
+                }
                 _phoneNumber = value;
             }
         }
@@ -83,9 +88,13 @@ namespace ContactsApp.Model
             get { return _email; }
             set {
                 if (value.Length > 100)
+                {
                     throw new ArgumentException("Email length should be less than 50 symbols");
+                }
                 if (value.Length == 0)
+                {
                     throw new ArgumentException("Email should be setted");
+                }
                 _email = value; 
             }
         }
@@ -98,9 +107,13 @@ namespace ContactsApp.Model
             get { return _dateOfBirth; }
             set {
                 if (value.Year < 1900)
+                {
                     throw new ArgumentException("DateTime should be more than 1900");
+                }
                 if (value.CompareTo(DateTime.Now) >= 0)
+                {
                     throw new ArgumentException("DateTime should be less than now");
+                }
                 _dateOfBirth = value;
             }
         }
@@ -113,9 +126,13 @@ namespace ContactsApp.Model
             get { return _vkID; }
             set {
                 if (value.Length > 50 )
+                {
                     throw new ArgumentException("VK ID length should be less than 50 symbols");
+                }
                 if (value.Length == 0)
+                {
                     throw new ArgumentException("VK ID should be setted");
+                }
                 _vkID = value; 
             }
         }
@@ -123,10 +140,7 @@ namespace ContactsApp.Model
         /// <summary> 
         /// Создает пустой экземпляр <see cref="Contact"/>. 
         /// </summary> 
-        public Contact()
-        {
-
-        }
+        public Contact() { }
 
         /// <summary> 
         /// Создает экземпляр <see cref="Contact"/>. 

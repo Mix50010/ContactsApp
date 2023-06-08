@@ -94,7 +94,9 @@ namespace ContactsApp.View
         private void RemoveContact(int index)
         {
             if (index == -1)
-                return; 
+            {
+                return;
+            }
             if (MessageBox.Show("Вы действительно хотите удалить " + 
                 _project.Contacts[index].FullName + "?") == DialogResult.OK)
             {
@@ -188,9 +190,13 @@ namespace ContactsApp.View
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ContactsListBox.SelectedIndex == -1)
+            {
                 ClearSelectedContact();
+            }    
             else
+            {
                 UpdateSelectedContact(ContactsListBox.SelectedIndex);
+            }   
         }
 
         /// <summary>
@@ -318,7 +324,5 @@ namespace ContactsApp.View
         {
             BirthdayPanel.Visible = false;
         }
-
-
     }
 }

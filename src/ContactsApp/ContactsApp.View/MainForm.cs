@@ -55,14 +55,6 @@ namespace ContactsApp.View
                 ContactsListBox.Items.Add(contact.FullName);
             }
         }
-
-        /// <summary> 
-        /// Добавляет контакт в проект. 
-        /// </summary> 
-        private void AddRandomContact()
-        {
-            _project.Contacts.Add(ObjectFactory.GetRandomContact());
-        }
         
         /// <summary>
         /// Добавляет контакт.

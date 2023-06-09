@@ -154,6 +154,7 @@ namespace ContactsApp.View
                     var newContact = contactForm.Contact;
                     _project.Contacts[_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex])] = newContact;
                     UpdateSelectedContact(ContactsListBox.SelectedIndex);
+                    UpdateCurrentContacts();
                     UpdateListBox();
                     _projectSerializer.SaveToFile(_project);
                 }

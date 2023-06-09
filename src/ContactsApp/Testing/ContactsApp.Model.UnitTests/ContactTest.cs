@@ -160,11 +160,15 @@ namespace ContactsApp.Model.UnitTests
             TestName = "Присвоение слишком длинной  строки в VkID")]
         public void TestVkIDSet_ArgumentException(string wrongVkID, string message)
         {
-            //Arrange
+            // Arrange
             var contact = new Contact();
 
-            //Assert & Act
-            Assert.Throws<ArgumentException>(() => contact.VkID = wrongVkID,
+            // Assert
+            Assert.Throws<ArgumentException>(() =>
+            {
+                // Act
+                contact.VkID = wrongVkID;
+            },
                 message);
         }
 
@@ -205,9 +209,13 @@ namespace ContactsApp.Model.UnitTests
             //Arrange
             var contact = new Contact("Михаил", "+7 (923) 444-1227", "hi@ya.ru",
                 DateTime.Now.AddYears(-10), "12345");
+            var clone = (Contact)contact.Clone();
+
+            // Act
+            var expected = contact.CompareTo(clone);
 
             //Assert & Act
-            Assert.AreEqual(contact.CompareTo((Contact)contact.Clone()), 0, "Контакт неправильно копируется");
+            Assert.AreEqual(expected, 0, "Контакт неправильно копируется");
         }
     }
 }

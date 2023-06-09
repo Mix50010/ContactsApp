@@ -17,17 +17,17 @@ namespace ContactsApp.View
         /// <summary>
         /// Цвет кнопок
         /// </summary>
-        Color CORRECT = Color.White;
+        static readonly Color CORRECT = Color.White;
 
         /// <summary>
         /// Цвет при наведении
         /// </summary>
-        Color MOUSEENTER = System.Drawing.ColorTranslator.FromHtml("#F5F5FF");
+        static readonly Color MOUSEENTER = System.Drawing.ColorTranslator.FromHtml("#F5F5FF");
 
         /// <summary>
         /// Цвет кнопки удаления при наведении
         /// </summary>
-        Color DELETEMOUSEENTER = System.Drawing.ColorTranslator.FromHtml("#FAF5F5");
+        static readonly Color DELETEMOUSEENTER = System.Drawing.ColorTranslator.FromHtml("#FAF5F5");
 
         /// <summary> 
         /// Проект. 

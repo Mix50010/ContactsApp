@@ -14,11 +14,15 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Позитивный сет геттера FullName")]
         public void TestFullNameGet_CorrectValue()
         {
+            //Arrange
             var expected = "Смирнов Михаил";
             var contact = new Contact();
+
+            //Act
             contact.FullName = expected;
             var actual = expected;
 
+            //Assert
             Assert.AreEqual(expected, actual, "Геттер FullName возвращает неверную фамилию");
         }
 
@@ -28,8 +32,10 @@ namespace ContactsApp.Model.UnitTests
             TestName = "Присвоение слишком длинной  строки в полное имя")]
         public void TestFullNameSet_ArgumentException(string wrongFullName, string message)
         {
+            //Arrange
             var contact = new Contact();
 
+            //Assert & Act
             Assert.Throws<ArgumentException>(() => contact.FullName = wrongFullName,
                 message);
         }
@@ -37,11 +43,15 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Позитивный сет геттера PhoneNumber")]
         public void TestPhoneNumberGet_CorrectValue()
         {
+            //Arrange
             var expected = "+7 (923) 444-1226";
             var contact = new Contact();
+
+            //Act
             contact.PhoneNumber = expected;
             var actual = expected;
 
+            //Assert
             Assert.AreEqual(expected, actual, "Геттер PhoneNumber возвращает неверную фамилию");
         }
 
@@ -51,8 +61,10 @@ namespace ContactsApp.Model.UnitTests
             TestName = "Присвоение букв в номер")]
         public void TestPhoneNumberSet_ArgumentException(string wrongPhoneNumber, string message)
         {
+            //Arrange
             var contact = new Contact();
 
+            //Assert
             Assert.Throws<ArgumentException>(() => contact.PhoneNumber = wrongPhoneNumber,
                 message);
         }
@@ -60,11 +72,15 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Позитивный сет геттера Email")]
         public void TestEmailGet_CorrectValue()
         {
+            //Arrange
             var expected = "hi@ya.ru";
             var contact = new Contact();
+
+            //Act
             contact.Email = expected;
             var actual = expected;
 
+            //Assert
             Assert.AreEqual(expected, actual, "Геттер FullName возвращает неверную фамилию");
         }
 
@@ -74,8 +90,10 @@ namespace ContactsApp.Model.UnitTests
             TestName = "Присвоение слишком длинной  строки в емаил")]
         public void TestEmailSet_ArgumentException(string wrongEmail, string message)
         {
+            //Arrange
             var contact = new Contact();
 
+            //Assert
             Assert.Throws<ArgumentException>(() => contact.Email = wrongEmail,
                 message);
         }
@@ -83,20 +101,27 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Позитивный сет геттера DateOfBirth")]
         public void TestDateOfBirthGet_CorrectValue()
         {
+            //Arrange
             var expected = DateTime.Now.AddYears(-10);
             var contact = new Contact();
+
+            //Act
             contact.DateOfBirth  = expected;
             var actual = expected;
 
+            //Assert
             Assert.AreEqual(expected, actual, "Геттер DateOfBirth возвращает неверную фамилию");
         }
 
         [Test(Description = "Присвоение слишком раннего времени в  DateOfBirth")]
         public void TestDateOfBirthSet_LessThan1900()
         {
+            //Arrange
             var wrongDateOfBirth = DateTime.Now.AddYears(-1000);
             var contact = new Contact();
             var message = "Должно возникать исключение, если дата меньше 1900 года";
+
+            //Assert & Act
             Assert.Throws<ArgumentException>(() => contact.DateOfBirth = wrongDateOfBirth,
                 message);
         }
@@ -104,9 +129,12 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Присвоение слишком позднего времени в  DateOfBirth")]
         public void TestDateOfBirthSet_MoreThanNow()
         {
+            //Arrange
             var wrongDateOfBirth = DateTime.Now.AddYears(1000);
             var contact = new Contact();
             var message = "Должно возникать исключение, если дата больше текущей";
+
+            //Assert & Act
             Assert.Throws<ArgumentException>(() => contact.DateOfBirth = wrongDateOfBirth,
                 message);
         }
@@ -114,11 +142,15 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Позитивный сет геттера VKID")]
         public void TestVkIDGet_CorrectValue()
         {
+            //Arrange
             var expected = "12312";
             var contact = new Contact();
+
+            //Act
             contact.Email = expected;
             var actual = expected;
 
+            //Assert
             Assert.AreEqual(expected, actual, "Геттер VkID возвращает неверную фамилию");
         }
 
@@ -128,8 +160,10 @@ namespace ContactsApp.Model.UnitTests
             TestName = "Присвоение слишком длинной  строки в VkID")]
         public void TestVkIDSet_ArgumentException(string wrongVkID, string message)
         {
+            //Arrange
             var contact = new Contact();
 
+            //Assert & Act
             Assert.Throws<ArgumentException>(() => contact.VkID = wrongVkID,
                 message);
         }
@@ -137,8 +171,11 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Тест корректности конструктора Контакта")]
         public void TestContactConstructor_CorrectValue()
         {
+            //Arrange
             var contact = new Contact("Михаил", "+7 (923) 444-1227", "hi@ya.ru",
                 DateTime.Now.AddYears(-10), "12345");
+
+            //Assert & Act
             Assert.AreEqual(contact.FullName, "Михаил", "Конструктор Контакта неправильно присваивает имя");
             Assert.AreEqual(contact.PhoneNumber, "+7 (923) 444-1227", "Конструктор Контакта неправильно присваивает номер");
             Assert.AreEqual(contact.Email, "hi@ya.ru", "Конструктор Контакта неправильно присваивает ");
@@ -149,10 +186,15 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Тест корректности копирования Контакта")]
         public void TestContactClone_CorrectValue()
         {
+            //Arrange
             var contact = new Contact("Михаил", "+7 (923) 444-1227", "hi@ya.ru",
                 DateTime.Now.AddYears(-10), "12345");
             var contactCloned = (Contact)contact.Clone();
+
+            //Act
             var isCorrect = contact.CompareTo(contactCloned);
+
+            //Assert
             Assert.AreEqual(isCorrect, 0, "Контакт неправильно копируется");
             
         }
@@ -160,11 +202,12 @@ namespace ContactsApp.Model.UnitTests
         [Test(Description = "Тест корректности сравнения Контакта")]
         public void TestContactCompare_CorrectValue()
         {
+            //Arrange
             var contact = new Contact("Михаил", "+7 (923) 444-1227", "hi@ya.ru",
                 DateTime.Now.AddYears(-10), "12345");
+
+            //Assert & Act
             Assert.AreEqual(contact.CompareTo((Contact)contact.Clone()), 0, "Контакт неправильно копируется");
-
         }
-
     }
 }

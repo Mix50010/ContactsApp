@@ -137,28 +137,6 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Смена иконки.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
-        {
-            AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
-            AddPhotoButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
-        }
-
-        /// <summary>
-        /// Смена иконки.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
-        {
-            AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
-            AddPhotoButton.BackColor = Color.White;
-        }
-
-        /// <summary>
         /// Закрытие формы
         /// </summary>
         /// <param name="sender"></param>
@@ -285,8 +263,26 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Смена иконки.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
+        {
+            AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
+            AddPhotoButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
+        }
 
-
-
+        /// <summary>
+        /// Смена иконки.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
+        {
+            AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
+            AddPhotoButton.BackColor = Color.White;
+        }
     }
 }

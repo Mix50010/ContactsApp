@@ -15,6 +15,27 @@ namespace ContactsApp.View
     public partial class ContactForm : Form
     {
         /// <summary>
+        /// Цвет поля ввода при некорректном вводе.
+        /// </summary>
+        static readonly Color TEXTBOXINCORRECT = Color.LightPink;
+
+
+        /// <summary>
+        /// Цвет поля ввода.
+        /// </summary>
+        static readonly Color TEXTBOXCORRECT = Color.White;
+
+        /// <summary>
+        /// Цвет кнопок
+        /// </summary>
+        static readonly Color CORRECT = Color.White;
+
+        /// <summary>
+        /// Цвет при наведении
+        /// </summary>
+        static readonly Color MOUSEENTER = System.Drawing.ColorTranslator.FromHtml("#F5F5FF");
+  
+        /// <summary>
         /// Экземпляр контакта.
         /// </summary>
         private Contact _contact;
@@ -172,12 +193,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.FullName = FullNameTextBox.Text;
-                FullNameTextBox.BackColor = Color.White;
+                FullNameTextBox.BackColor = TEXTBOXCORRECT;
                 _fullNameTextBoxError = "";
             }
             catch (ArgumentException exception)
             {
-                FullNameTextBox.BackColor = Color.LightPink;
+                FullNameTextBox.BackColor = TEXTBOXINCORRECT;
                 _fullNameTextBoxError = exception.Message;
             }
             
@@ -193,7 +214,7 @@ namespace ContactsApp.View
             try
             {
                 _contact.Email = EmailTextBox.Text;
-                EmailTextBox.BackColor = Color.White;
+                EmailTextBox.BackColor = TEXTBOXCORRECT;
                 _emailTextBoxError = "";
             }
             catch (ArgumentException exception)
@@ -213,12 +234,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.PhoneNumber = PhoneNumberMaskedTextBox1.Text;
-                PhoneNumberMaskedTextBox1.BackColor = Color.White;
+                PhoneNumberMaskedTextBox1.BackColor = TEXTBOXCORRECT;
                 _phoneNumberMaskedTextBoxError = "";
             }
             catch (ArgumentException exception)
             {
-                PhoneNumberMaskedTextBox1.BackColor = Color.LightPink;
+                PhoneNumberMaskedTextBox1.BackColor = TEXTBOXINCORRECT;
                 _phoneNumberMaskedTextBoxError = exception.Message;
             }
         }
@@ -233,12 +254,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.DateOfBirth = DateOfBirthPicker.Value;
-                DateOfBirthPicker.BackColor = Color.White;
+                DateOfBirthPicker.BackColor = TEXTBOXCORRECT;
                 _DateOfBirthPickerError = "";
             }
             catch (ArgumentException exception)
             {
-                DateOfBirthPicker.BackColor = Color.LightPink;
+                DateOfBirthPicker.BackColor = TEXTBOXINCORRECT;
                 _DateOfBirthPickerError = exception.Message;
             }
         }
@@ -253,12 +274,12 @@ namespace ContactsApp.View
             try
             {
                 _contact.VkID = VKTextBox.Text;
-                VKTextBox.BackColor = Color.White;
+                VKTextBox.BackColor = TEXTBOXCORRECT;
                 _VKTextBoxError = "";
             }
             catch (ArgumentException exception)
             {
-                VKTextBox.BackColor = Color.LightPink;
+                VKTextBox.BackColor = TEXTBOXINCORRECT;
                 _VKTextBoxError = exception.Message;
             }
         }
@@ -271,7 +292,7 @@ namespace ContactsApp.View
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
-            AddPhotoButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
+            AddPhotoButton.BackColor = MOUSEENTER;
         }
 
         /// <summary>
@@ -282,7 +303,7 @@ namespace ContactsApp.View
         private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
-            AddPhotoButton.BackColor = Color.White;
+            AddPhotoButton.BackColor = CORRECT;
         }
     }
 }
